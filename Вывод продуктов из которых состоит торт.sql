@@ -8,4 +8,4 @@ INNER JOIN [CTE] on [CTE].ParentID = [NextLevel].RecID
 
 SELECT [Articuls].Name FROM CTE
 LEFT JOIN [Articuls] on [Articuls].ID = [CTE].ParentID
-WHERE [Articuls].ID in (2,3,6,7,8)
+WHERE [Articuls].ID not in (SELECT DISTINCT RecID FROM [Xarticuls])

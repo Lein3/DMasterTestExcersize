@@ -1,0 +1,3 @@
+SELECT *
+FROM [Articuls]
+WHERE ID IN (2,3,6,7,8)

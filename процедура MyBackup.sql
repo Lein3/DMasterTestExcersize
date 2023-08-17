@@ -37,6 +37,7 @@ BEGIN
 			
 			execute sp_executesql @query, N'@columnValue varchar(50) OUTPUT', @columnValue OUTPUT
 			SET @applyQuote = CASE WHEN @dataType like '%CHAR%' OR @dataType like '%DATE%' OR @dataType like '%TIME%' THEN 1 ELSE 0 END
+			SET @ColumnValue = ISNULL(@ColumnValue, 'NULL')
 			SET @columnValue = CASE WHEN @applyQuote = 1 THEN '''' + @columnValue + '''' ELSE @columnValue END
 			SET @ValuesList = @ValuesList + @columnValue + ', '
 			fetch next from tableInfo into @columnName, @dataType
